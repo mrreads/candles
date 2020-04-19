@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+    font-family: 'Nunito', sans-serif;
+}
+
+.main {
+    min-height: 500px;
+    height: 68%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.menu {
+    display: flex;
+    width: 100%;
+    background-color: #ffc7749e;
+    flex-flow: row wrap;
+}   
+
+.menu a {
+    text-decoration: none;
+    color: #421c18;
+    font-size: larger;
+    margin-left: 130px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s all;
+    transform: scale(1);
+    padding: 15px;
+}  
+
+
+.nabor {
+    min-height: 360px;
+	height: 32%;
+	background-color: #FFC774;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	overflow: scroll;
+    flex-wrap: nowrap;
+    padding: 0 45px;
+}
+
+.nabor img {
+    width: 295px;
+    height: 230px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0px 23px;
+}
+
+.nabor img:hover {
+    background-color: white;
+}
+
+.img_sveha {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+    margin-right: 25px;
+}
+
+.img_sveha .color {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    mix-blend-mode: soft-light;
+}
+
+.img_sveha .zapah {
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    left: 10px;
+    bottom: 10px;
+
+    background-repeat: no-repeat;
+	background-position: center;
+    background-size: 75%;
+    
+    border-radius: 100%;
+    background-color: #FFC774;
+    box-shadow: 2px 2px 0px white;
+}
+
+.img_sveha .razmer {
+    position: absolute;
+    padding: 5px 15px;
+    font-weight: bold;
+    right: 10px;
+    bottom: 10px;
+    background-color: #FFC774;
+    box-shadow: 2px 2px 0px white;
+    text-shadow: 1px 1px 0px white;
+}
+
+.img_sveha .kartinka {
+    margin-bottom: 52px;
+    display: block;
+    width: 200px;
+    background-color: white;
+}
+
+div.img_sveha img {
+    width: 130px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    max-height: 240px;
+    padding: 40px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+}
+
+img {
+
+}
+
+.buttons {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttons a {
+    min-width: 280px;
+    padding: 20px 125px;
+    transition: 0.3s all;
+    transform: scale(1);
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #FF4747;
+    margin-top: 22%;
+}
+
+.buttons a:hover, .menu a:hover, .img_sveha:hover {
+	transform: scale(1.05);
+}
+
+a.moi_svechi {
+    height: 60px;
+    width: 347px;
+    margin: 50px auto;
+}
+
+::-webkit-scrollbar
+{
+	width: 5px;
+	height: 10px;
+}
+::-webkit-scrollbar-track-piece
+{
+	background-color: #FFC774;
+}
+::-webkit-scrollbar-thumb
+{
+	height: 50px;
+
+	background-color: rgb(255, 229, 188);
+}

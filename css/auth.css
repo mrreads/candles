@@ -1,0 +1,74 @@
+* {
+      transition: 0.3s all;
+      margin: 0%;
+      padding: 0%;
+}
+
+body { 
+  font-family: "Roboto", sans-serif;
+  background-size: cover;
+	background: linear-gradient(90deg, rgb(249, 173, 33) 0%, rgb(216, 105, 105) 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 18%;
+    margin-top: 16%;
+}
+
+html{
+  background-color: #ffb545e0;
+      font-family: 'Nunito', sans-serif;
+}
+  
+.h_login   {
+    border: none;
+    margin: 0 0 15px;
+    padding: 18px;
+    outline: none;
+    /* font-weight: bolder; */
+    /* text-align: center; */
+    border-bottom: 4px solid #ff7600e0;
+    border-radius: 3px;
+}
+
+.h_login:hover,.h_login:focus{
+    background: #ffe3ba;
+    border-bottom: 4px solid #ff7600e0;
+    border-radius: 5px;
+}
+
+
+.voiti{
+  border:0;
+  background-color: white
+}
+
+.reg input:hover{
+  transform: scale(1.05);
+}
+
+ 
+ 
+.reg{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.reg input{
+    margin: 5px;
+    width: 43%;
+    transition: 0.3s all;
+    transform: scale(1);
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #FF4747;
+    padding: 10px;
+    border: none;
+}

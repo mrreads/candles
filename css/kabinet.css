@@ -1,0 +1,147 @@
+* {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+    font-family: "Nunito", sans-serif;
+    background-color: #FFC774;
+}
+
+.menu {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    background-color: #ffe0b1;
+}   
+
+.menu a {
+    text-decoration: none;
+    color: #421c18;
+    font-size: larger;
+    margin-left: 130px;
+    display: flex;
+    align-items: center;
+    transition: 0.3s all;
+    padding: 15px;
+    transform: scale(1);
+}  
+
+.menu a:hover,.dalee:hover
+{
+    transform: scale(1.05);
+}
+
+.infa:hover {
+    box-shadow: 0px -1px 21px -1px rgba(34, 60, 80, 0.26);
+}
+
+
+.niz {
+    height: 95%;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.flex {
+    width: 100%;
+    /* height: 100%; */
+    justify-content: center;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+h3{
+    width: 100%;
+    text-align: center;
+    padding: 75px 0px;
+    color: #421c18;
+    font-weight: normal;
+    font-size: xx-large;
+}
+
+.infa {
+    margin: 0 25px;
+    width: 725px;
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    margin-bottom: 60px;
+}
+
+.img_svecha {
+    width: 30%;
+    /* height: auto; */
+    /* background-position-x: 85px; */
+    margin: auto;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: contain;
+}
+
+.img_svecha {
+    position: relative;
+}
+
+.img_svecha .img-color {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    mix-blend-mode: soft-light;
+}
+
+.infa img {
+    width: 40%;
+}
+
+.dalee {
+    width: 100px;
+    height: 50px;
+    background-color: #FF4747;
+    border-radius: 3px;
+    margin-left: 70%;
+    margin-top: 4%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: -16px;
+}
+
+.dalee img {
+    width: 30px;
+}
+
+.h_infa {
+    padding-top: 45px;
+    width: 60%;
+    background-color: #ffcf8875;
+}
+
+ul {
+    height: 10%;
+}
+
+li{
+    list-style: none;
+    padding: 20px 35px;
+    text-decoration: none;
+    color: #421c18;
+    font-size: larger;
+}
+
+.colors {
+    width: 100px;
+    height: 37px;
+    background-color: red;
+    border-radius: 3px;
+    margin: 10px 35px;
+}
