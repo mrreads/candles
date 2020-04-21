@@ -48,7 +48,7 @@ html{
   background-color: white
 }
 
-.reg input:hover{
+.reg input:hover, .reg a:hover{
   transform: scale(1.05);
 }
 
@@ -60,7 +60,7 @@ html{
     justify-content: center;
 }
 
-.reg input{
+.reg input, .reg a{
     margin: 5px;
     width: 43%;
     transition: 0.3s all;

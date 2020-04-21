@@ -14,7 +14,7 @@
 
     	<div class="reg">
     		<input type="submit" name="auth-button" required class="voiti" value="ВОЙТИ">
-      		<!-- <input type="submit" name="reg-button" required class="voiti" value="РЕГИСТРАЦИЯ"> -->
+      		<a href="./add.php"> Регистрация </a>
     	</div>
 
     </form>
