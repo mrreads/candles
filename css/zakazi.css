@@ -1,0 +1,43 @@
+﻿.left, .right
+{
+    width: 50%;
+}
+
+.left
+{
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+}
+
+.left .delete
+{
+    min-width: 250px;
+    margin-left: 35px;
+    color: white;
+    text-shadow: 1px 1px 0 black;
+    margin-top: 0%;
+    margin-left: 0%;
+    margin-right: 25px;
+}
+
+.h_infa ul > div
+{
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-end;
+}
+
+.left .dalee
+{
+    margin-top: 0%;
+    margin-left: 0%;
+    width: 60px;
+    margin-right: 25px;
+}
+
+@media screen and (max-width: 1400px)
+{
+    .left, .right
+    {
+        width: 100%;
+    }
+}

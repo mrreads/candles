@@ -66,10 +66,13 @@
 					echo '<div class="picture"><img src="'.$svecha['form_path'].'"></div>';
 				echo '</div>';
 	
-				echo '<form class="infa" method="POST">';
+				echo '<form class="infa" method="POST" action="./php/addToCart.php">';
 
+					
 					echo '<h1>'.$svecha['candle_name'].'</h1>';
-
+					
+					echo '<input type="hidden" name="id_candle" value="'.$svecha['id_candle'].'">';
+					
 					echo '<h2 class="h-forma"> ФОРМА </h2>';
 					echo '<div class="forma">'.$svecha['form_name'].'</div>';
 		

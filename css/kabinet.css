@@ -67,7 +67,7 @@ h3{
     padding: 75px 0px;
     padding-bottom: 15px;
     color: #421c18;
-    font-weight: normal;
+    font-weight: bold;
     font-size: xx-large;
 }
 
@@ -119,7 +119,7 @@ h4{
     width: 40%;
 }
 
-.dalee {
+.dalee, .delete {
     width: 100px;
     height: 50px;
     background-color: #FF4747;
