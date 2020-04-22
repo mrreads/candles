@@ -40,8 +40,9 @@
 
 	<div class="niz"> 
 
-		<h3>ВАШИ СВЕЧИ</h3>
-		
+		<h3>СВЕЧИ, СОЗДАННЫЕ ВАМИ </h3>
+		<h4> Тут отображаются свечи, созданные лично вами в конструкторе. </h4>
+
 		<div class="flex">
 
 		<?php
@@ -84,6 +85,7 @@
 								<li>ЗАПАХ: '.$svecha['zapah_name'].'</li>
 								<div class="colors" style="background-color: '.$svecha['color_code'].'"></div>
 								<li>ЦЕНА: '.$svecha['candle_price'].'</li>
+								<li>НА СКЛАДЕ: '.$svecha['form_available'].'</li>
 								<a href="svecha.php?id='.$svecha['id_candle'].'" class="">
 									<div class="dalee" style="background-color: '.$svecha['color_code'].'">
 										<img src="img/strelka.png">

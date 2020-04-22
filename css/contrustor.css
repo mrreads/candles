@@ -44,6 +44,11 @@ body, input, a, button
 	padding: 15px;
 }
 
+.menu a:last-child
+{
+    margin-left: auto;
+}
+
 .contructor
 {
 	display: flex;

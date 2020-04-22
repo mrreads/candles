@@ -39,6 +39,10 @@ html, body {
     padding: 15px;
 }  
 
+.menu a:last-child
+{
+    margin-left: auto;
+}
 
 .nabor {
     min-height: 360px;

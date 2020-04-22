@@ -40,6 +40,11 @@ body
     transform: scale(1);
 }  
 
+.menu a:last-child
+{
+    margin-left: auto;
+}
+
 .link a {
     text-decoration: none;
     color: white;
@@ -97,7 +102,7 @@ body
 	mix-blend-mode: soft-light;
 }
 
-.buttons a {
+.buttons > input {
     min-width: 280px;
     padding: 20px 125px;
     transition: 0.3s all;
@@ -108,14 +113,16 @@ body
     background-color: #FF4747;
     margin-top: 50px;
     display: block;
+    border: 0;
+    cursor: pointer;
 }
 
-.buttons a:hover, .menu a:hover, .nabor img:hover
+.buttons input:hover, .menu a:hover, .nabor img:hover
 {
     transform: scale(1.05);
 }
 
-.infa{
+.infa {
 	display: flex;
   	flex-direction: column;
     /* justify-content: center; */
@@ -126,7 +133,7 @@ body
 	background-color: #FFC774;
 }
 
-.picture{
+.picture {
 	height: 70%;
     margin-bottom: 10%;
     background-repeat: no-repeat;
@@ -188,4 +195,12 @@ li{
 .zapahi img {
     max-width: 80px;
     min-height: 80px;
+}
+
+.niz input[type='number']
+{
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 26px;
 }

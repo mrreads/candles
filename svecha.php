@@ -66,7 +66,7 @@
 					echo '<div class="picture"><img src="'.$svecha['form_path'].'"></div>';
 				echo '</div>';
 	
-				echo '<div class="infa">';
+				echo '<form class="infa" method="POST">';
 
 					echo '<h1>'.$svecha['candle_name'].'</h1>';
 
@@ -84,13 +84,16 @@
 		
 					echo '<h2 class="h-cena"> ЦЕНА </h2>';
 					echo '<div class="cena">'.$svecha['candle_price'].' рублей</div>';
-		
+
+					echo '<input type="number" name="count" value="1" min="1" max="'.$svecha['form_available'].'">';
+
 					echo '<div class="buttons">';
-					echo '<a href="">КУПИТЬ</a>';
-				echo '</div>';
+						echo '<input type="submit" value="В КОРЗИНУ">';
+					echo '</div>';
+				echo "</form>";
 			}
 		?>
-
+		
 		</div>
 
 	</div>

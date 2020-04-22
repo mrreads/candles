@@ -29,7 +29,12 @@ html, body {
     transition: 0.3s all;
     padding: 15px;
     transform: scale(1);
-}  
+} 
+
+.menu a:last-child
+{
+    margin-left: auto;
+}
 
 .menu a:hover,.dalee:hover
 {
@@ -60,9 +65,20 @@ h3{
     width: 100%;
     text-align: center;
     padding: 75px 0px;
+    padding-bottom: 15px;
     color: #421c18;
     font-weight: normal;
     font-size: xx-large;
+}
+
+h4{
+    width: 100%;
+    text-align: center;
+    padding: 15px 0px;
+    color: #421c18;
+    font-weight: normal;
+    font-size: x-large;
+    padding-bottom: 50px;
 }
 
 .infa {
@@ -132,7 +148,7 @@ ul {
 
 li{
     list-style: none;
-    padding: 20px 35px;
+    padding: 5px 35px;
     text-decoration: none;
     color: #421c18;
     font-size: larger;
