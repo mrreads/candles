@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 23 2020 г., 03:49
+-- Время создания: Апр 23 2020 г., 12:54
 -- Версия сервера: 10.4.12-MariaDB
 -- Версия PHP: 7.4.5
 
@@ -77,13 +77,6 @@ CREATE TABLE `cart` (
   `cart_count` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Дамп данных таблицы `cart`
---
-
-INSERT INTO `cart` (`id_cart`, `id_user`, `id_candle`, `cart_count`) VALUES
-(60, 1, 2, 3);
-
 -- --------------------------------------------------------
 
 --
@@ -129,10 +122,10 @@ CREATE TABLE `form` (
 --
 
 INSERT INTO `form` (`id_form`, `form_name`, `form_path`, `form_price`, `form_available`) VALUES
-(1, 'Длинная', 'img/forma_1.png', 300, 373),
-(2, 'Короткая', 'img/forma_2.png', 10, 17),
-(3, 'Изогнутая', 'img/forma_3.png', 168, 173),
-(4, 'Сердечко', 'img/forma_4.png', 19, 352);
+(1, 'Длинная', 'img/forma_1.png', 361, 373),
+(2, 'Короткая', 'img/forma_2.png', 14, 17),
+(3, 'Изогнутая', 'img/forma_3.png', 170, 173),
+(4, 'Сердечко', 'img/forma_4.png', 319, 352);
 
 -- --------------------------------------------------------
 
@@ -151,8 +144,9 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`id_order`, `id_user`, `order_date`) VALUES
-(41, 1, '2020-04-23 14:27:01'),
-(42, 1, '2020-04-23 14:27:01');
+(21, 1, '2020-04-23 14:27:01'),
+(24, 1, '2020-04-23 14:27:01'),
+(25, 1, '2020-04-23 14:27:01');
 
 -- --------------------------------------------------------
 
@@ -171,9 +165,10 @@ CREATE TABLE `order_candle` (
 --
 
 INSERT INTO `order_candle` (`id_order-candle`, `id_order`, `id_candle`) VALUES
-(9, 41, 16),
-(10, 42, 19),
-(11, 42, 15);
+(26, 21, 18),
+(28, 24, 15),
+(29, 25, 15),
+(30, 25, 22);
 
 -- --------------------------------------------------------
 
@@ -314,8 +309,8 @@ ALTER TABLE `order`
 --
 ALTER TABLE `order_candle`
   ADD PRIMARY KEY (`id_order-candle`),
-  ADD KEY `fk_order_candle_order` (`id_order`),
-  ADD KEY `fk_order_candle_candle` (`id_candle`);
+  ADD KEY `fk_order_candle_candle_0` (`id_candle`),
+  ADD KEY `fk_order_candle_order_0` (`id_order`);
 
 --
 -- Индексы таблицы `razmer`
@@ -357,7 +352,7 @@ ALTER TABLE `candle`
 -- AUTO_INCREMENT для таблицы `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
 
 --
 -- AUTO_INCREMENT для таблицы `color`
@@ -375,13 +370,13 @@ ALTER TABLE `form`
 -- AUTO_INCREMENT для таблицы `order`
 --
 ALTER TABLE `order`
-  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT для таблицы `order_candle`
 --
 ALTER TABLE `order_candle`
-  MODIFY `id_order-candle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_order-candle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT для таблицы `razmer`
@@ -431,14 +426,14 @@ ALTER TABLE `cart`
 -- Ограничения внешнего ключа таблицы `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `fk_order_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_order_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `order_candle`
 --
 ALTER TABLE `order_candle`
-  ADD CONSTRAINT `fk_order_candle_candle` FOREIGN KEY (`id_candle`) REFERENCES `candle` (`id_candle`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_order_candle_order` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_order_candle_candle_0` FOREIGN KEY (`id_candle`) REFERENCES `candle` (`id_candle`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_order_candle_order_0` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `user_candle`
