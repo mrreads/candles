@@ -84,7 +84,10 @@
 		
 					echo '<h2 class="h-zapahi"> ЗАПАХ </h2>';
 					echo '<div class="zapahi"><img src="'.$svecha['zapah_path'].'"></div>';
-		
+
+					echo '<h2 class="h-count"> ЕСТЬ НА СКЛАДЕ </h2>';
+					echo '<div class="cena">'.$svecha['form_available'].' шт</div>';
+
 					echo '<h2 class="h-cena"> ЦЕНА </h2>';
 					echo '<div class="cena">'.$svecha['candle_price'].' рублей</div>';
 

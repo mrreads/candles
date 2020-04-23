@@ -3,13 +3,14 @@
     width: 50%;
 }
 
-.left
+.right
 {
-    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    border-left: 2px solid rgba(0, 0, 0, 0.5);
 }
 
 .left .delete
 {
+    text-decoration: none;
     min-width: 250px;
     margin-left: 35px;
     color: white;
@@ -32,6 +33,38 @@
     margin-left: 0%;
     width: 60px;
     margin-right: 25px;
+}
+
+
+.zakaz
+{
+    width: 100%;
+    padding: 25px 15px;
+    margin-bottom: 15px;
+    background-color: #ffeed475;
+}
+
+.zakaz h1
+{
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.zakazat
+{
+    margin: 0 auto;
+    min-width: 280px;
+    padding: 20px 125px;
+    transition: 0.3s all;
+    transform: scale(1);
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #FF4747;
+    margin-top: 50px;
+    display: block;
+    border: 0;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 1400px)

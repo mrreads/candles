@@ -106,6 +106,14 @@
 				}
 			?>
 			</div>
+			<?php
+
+			if (mysqli_fetch_row(mysqli_query($link, 'SELECT COUNT(*) FROM `cart`'))[0] > 0)
+			{
+				echo '<a class="zakazat" href="./php/makeOrder.php">заказать</a>';
+			}
+			?>
+
 		</div>
 
 		<div class="right">
@@ -115,54 +123,100 @@
 			<div class="flex">
 
 			<?php
-				$querySvechi = 'SELECT
-									*,
-									(color.color_price + form.form_price + razmer.razmer_price + zapah.zapah_price) as candle_price
-								FROM
-									candle,
-									color,
-									form,
-									razmer,
-									zapah,
-									user_candle
-								WHERE
-									candle.id_color = color.id_color
-								AND 
-									candle.id_form = form.id_form 
-								AND 
-									candle.id_razer = razmer.id_razmer 
-								AND 
-									candle.id_zapah = zapah.id_zapah
-								AND
-									user_candle.id_candle = candle.id_candle
-								AND
-									user_candle.id_user = '.$userId;
-									
-				$resultSvechi = mysqli_query($link, $querySvechi);
+				$queryOrdersId = 'SELECT * FROM `order` WHERE id_user = '.$userId;
+										
+				$resultOrdersId = mysqli_query($link, $queryOrdersId);
 
-				while ($svecha = mysqli_fetch_assoc($resultSvechi))
+				while ($orderId = mysqli_fetch_assoc($resultOrdersId))
 				{
-					echo '<div class="infa">
-							<div class="img_svecha">
-								<div class="img-color" style="background-color: '.$svecha['color_code'].'" ></div>
-								<img src="'.$svecha['form_path'].'">
-							</div>
-							<div class="h_infa">
-								<ul>
-									<li>ФОРМА: '.$svecha['form_name'].'</li>
-									<li>РАЗМЕР: '.$svecha['razmer_name'].'</li>
-									<li>ЗАПАХ: '.$svecha['zapah_name'].'</li>
-									<div class="colors" style="background-color: '.$svecha['color_code'].'"></div>
-									<li>ЦЕНА: '.$svecha['candle_price'].'</li>
-									<li>НА СКЛАДЕ: '.$svecha['form_available'].'</li>
-									<a href="svecha.php?id='.$svecha['id_candle'].'" class="">
-										<div class="dalee" style="background-color: '.$svecha['color_code'].'">
-											<img src="img/strelka.png">
+					echo '<div class="zakaz">';
+						echo '<h1> Дата заказа - '.$orderId['order_date'].'</h1>';
+
+						$candlesId = 'SELECT * FROM order_candle  WHERE id_order = '.$orderId['id_order'];
+	
+						$resultCandlesId = mysqli_query($link, $candlesId);
+
+						while ($candle = mysqli_fetch_assoc($resultCandlesId))
+						{
+							
+							$querySvechi = 'SELECT
+												*,
+												(color.color_price + form.form_price + razmer.razmer_price + zapah.zapah_price) as candle_price
+													FROM
+														candle,
+														color,
+														form,
+														razmer,
+														zapah,
+														user_candle
+													WHERE
+														candle.id_color = color.id_color
+													AND 
+														candle.id_form = form.id_form 
+													AND 
+														candle.id_razer = razmer.id_razmer 
+													AND 
+														candle.id_zapah = zapah.id_zapah
+													AND
+														user_candle.id_candle = candle.id_candle
+													AND
+														user_candle.id_user = '.$userId.'
+													AND 
+														candle.id_candle = '.$candle['id_candle'];
+													
+												
+													
+							$resultSvechi = mysqli_query($link, $querySvechi);
+
+							while ($svecha = mysqli_fetch_assoc($resultSvechi))
+							{
+								echo '<div class="infa">
+										<div class="img_svecha">
+											<div class="img-color" style="background-color: '.$svecha['color_code'].'" ></div>
+											<img src="'.$svecha['form_path'].'">
 										</div>
-									</a>
-								</ul>
-							</div>	
-						</div>';
+										<div class="h_infa">
+											<ul>
+												<li>ФОРМА: '.$svecha['form_name'].'</li>
+												<li>РАЗМЕР: '.$svecha['razmer_name'].'</li>
+												<li>ЗАПАХ: '.$svecha['zapah_name'].'</li>
+												<div class="colors" style="background-color: '.$svecha['color_code'].'"></div>
+												<li>ЦЕНА: '.$svecha['candle_price'].'</li>
+												<a href="svecha.php?id='.$svecha['id_candle'].'" class="">
+													<div class="dalee" style="background-color: '.$svecha['color_code'].'">
+														<img src="img/strelka.png">
+													</div>
+												</a>
+											</ul>
+										</div>	
+									</div>';
+							}
+
+						}
+					
+					echo '</div>';
+
+					// echo '<div class="infa">
+					// 		<div class="img_svecha">
+					// 			<div class="img-color" style="background-color: '.$svecha['color_code'].'" ></div>
+					// 			<img src="'.$svecha['form_path'].'">
+					// 		</div>
+					// 		<div class="h_infa">
+					// 			<ul>
+					// 				<li>ФОРМА: '.$svecha['form_name'].'</li>
+					// 				<li>РАЗМЕР: '.$svecha['razmer_name'].'</li>
+					// 				<li>ЗАПАХ: '.$svecha['zapah_name'].'</li>
+					// 				<div class="colors" style="background-color: '.$svecha['color_code'].'"></div>
+					// 				<li>ЦЕНА: '.$svecha['candle_price'].'</li>
+					// 				<li>НА СКЛАДЕ: '.$svecha['form_available'].'</li>
+					// 				<a href="svecha.php?id='.$svecha['id_candle'].'" class="">
+					// 					<div class="dalee" style="background-color: '.$svecha['color_code'].'">
+					// 						<img src="img/strelka.png">
+					// 					</div>
+					// 				</a>
+					// 			</ul>
+					// 		</div>	
+					// 	</div>';
 				}
 			?>
 			</div>
