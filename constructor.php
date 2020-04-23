@@ -6,7 +6,7 @@
 
 	if (empty($userId))
 	{
-		header("Location: auth.php");
+		echo '<meta http-equiv="refresh" content="0; auth.php">';
 	}
 ?>
 

@@ -8,6 +8,7 @@
     {
         $login = $_POST['login'];
         $password = $_POST['password'];
+        $url = $_POST['url'];
 
         $queryCheck = "SELECT 
                             * 
@@ -28,9 +29,7 @@
                 $_SESSION['user_name'] = $userData['user_name'];
             }
 
-            ?>
-            <meta http-equiv="refresh" content="0;../index.php">
-            <?php 
+            echo '<meta http-equiv="refresh" content="0;'.$url.'">';
         }
         else
         {

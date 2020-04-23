@@ -6,12 +6,24 @@
 }
 
 html, body {
+    min-width: 375px;
 	width: 100%;
-	height: 100%;
     font-family: 'Nunito', sans-serif;
 }
 
+html
+{
+    height: 100%;
+}
+
+body
+{
+    display: flex;
+    flex-flow: column nowrap;
+    min-height: 100%;
+}
 .main {
+    flex-grow: 1;
     min-height: 500px;
     height: 68%;
     background-repeat: no-repeat;
@@ -31,17 +43,26 @@ html, body {
     text-decoration: none;
     color: #421c18;
     font-size: larger;
-    margin-left: 130px;
     display: flex;
     align-items: center;
     transition: 0.3s all;
     transform: scale(1);
-    padding: 15px;
+    padding: 15px 50px;
+    text-align: center;
+    justify-content: center;
 }  
 
 .menu a:last-child
 {
     margin-left: auto;
+}
+
+@media screen and (max-width: 425px)
+{
+    .menu a
+    {
+        width: 100%;
+    }
 }
 
 .nabor {

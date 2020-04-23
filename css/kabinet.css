@@ -14,26 +14,35 @@ html, body {
 
 .menu {
     display: flex;
-    flex-flow: row wrap;
     width: 100%;
-    background-color: #ffe0b1;
+    background-color: #ffe0b1;;
+    flex-flow: row wrap;
 }   
 
 .menu a {
     text-decoration: none;
     color: #421c18;
     font-size: larger;
-    margin-left: 130px;
     display: flex;
     align-items: center;
     transition: 0.3s all;
-    padding: 15px;
     transform: scale(1);
-} 
+    padding: 15px 50px;
+    text-align: center;
+    justify-content: center;
+}  
 
 .menu a:last-child
 {
     margin-left: auto;
+}
+
+@media screen and (max-width: 425px)
+{
+    .menu a
+    {
+        width: 100%;
+    }
 }
 
 .menu a:hover,.dalee:hover
@@ -74,7 +83,7 @@ h3{
 h4{
     width: 100%;
     text-align: center;
-    padding: 15px 0px;
+    padding: 15px 25px;
     color: #421c18;
     font-weight: normal;
     font-size: x-large;
@@ -160,4 +169,17 @@ li{
     background-color: red;
     border-radius: 3px;
     margin: 10px 35px;
+}
+
+@media screen and (max-width: 768px)
+{
+    .dalee
+    {
+        margin-left: auto;
+        margin-right: 10%;
+    }
+    li
+    {
+        font-size: medium;
+    }
 }

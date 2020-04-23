@@ -73,4 +73,16 @@
     {
         width: 100%;
     }
+    .infa
+    {
+        width: 96%;
+    }
+}
+
+@media screen and (max-width: 768px)
+{
+    .infa
+    {
+        width: 90%;
+    }
 }
