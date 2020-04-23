@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 15 2020 г., 12:56
--- Версия сервера: 10.4.12-MariaDB-log
--- Версия PHP: 7.4.4
+-- Время создания: Апр 23 2020 г., 03:49
+-- Версия сервера: 10.4.12-MariaDB
+-- Версия PHP: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -56,7 +56,33 @@ INSERT INTO `candle` (`id_candle`, `candle_name`, `id_zapah`, `id_form`, `id_col
 (13, 'свечка 13', 1, 4, 1, 4),
 (14, 'свечка 14', 4, 4, 4, 3),
 (15, 'свечка 15', 1, 4, 1, 4),
-(16, 'свечка 16', 4, 4, 7, 3);
+(16, 'свечка 16', 4, 4, 7, 3),
+(17, 'свечка 17', 4, 4, 7, 3),
+(18, 'свечка 18', 1, 2, 3, 2),
+(19, 'свечка 19', 2, 3, 4, 3),
+(20, 'свечка 20', 2, 1, 1, 4),
+(21, 'свечка 21', 1, 1, 1, 2),
+(22, 'свечка 22', 2, 1, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `cart`
+--
+
+CREATE TABLE `cart` (
+  `id_cart` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `id_candle` int(11) DEFAULT NULL,
+  `cart_count` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `cart`
+--
+
+INSERT INTO `cart` (`id_cart`, `id_user`, `id_candle`, `cart_count`) VALUES
+(60, 1, 2, 3);
 
 -- --------------------------------------------------------
 
@@ -94,18 +120,60 @@ CREATE TABLE `form` (
   `id_form` int(11) NOT NULL,
   `form_name` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `form_path` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `form_price` int(11) NOT NULL
+  `form_price` int(11) NOT NULL,
+  `form_available` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `form`
 --
 
-INSERT INTO `form` (`id_form`, `form_name`, `form_path`, `form_price`) VALUES
-(1, 'Длинная', 'img/forma_1.png', 300),
-(2, 'Короткая', 'img/forma_2.png', 200),
-(3, 'Изогнутая', 'img/forma_3.png', 400),
-(4, 'Сердечко', 'img/forma_4.png', 400);
+INSERT INTO `form` (`id_form`, `form_name`, `form_path`, `form_price`, `form_available`) VALUES
+(1, 'Длинная', 'img/forma_1.png', 300, 373),
+(2, 'Короткая', 'img/forma_2.png', 10, 17),
+(3, 'Изогнутая', 'img/forma_3.png', 168, 173),
+(4, 'Сердечко', 'img/forma_4.png', 19, 352);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order`
+--
+
+CREATE TABLE `order` (
+  `id_order` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
+  `order_date` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `order`
+--
+
+INSERT INTO `order` (`id_order`, `id_user`, `order_date`) VALUES
+(41, 1, '2020-04-23 14:27:01'),
+(42, 1, '2020-04-23 14:27:01');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `order_candle`
+--
+
+CREATE TABLE `order_candle` (
+  `id_order-candle` int(11) NOT NULL,
+  `id_order` int(11) DEFAULT NULL,
+  `id_candle` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп данных таблицы `order_candle`
+--
+
+INSERT INTO `order_candle` (`id_order-candle`, `id_order`, `id_candle`) VALUES
+(9, 41, 16),
+(10, 42, 19),
+(11, 42, 15);
 
 -- --------------------------------------------------------
 
@@ -147,7 +215,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `user_name`, `user_login`, `user_password`) VALUES
-(1, 'Иван', '123', '123');
+(1, 'Иван', '123', '123'),
+(2, 'Васёк', 'login_vasek', '123123'),
+(3, 'Ваня', '321', '123');
 
 -- --------------------------------------------------------
 
@@ -167,7 +237,13 @@ CREATE TABLE `user_candle` (
 
 INSERT INTO `user_candle` (`id_custom`, `id_candle`, `id_user`) VALUES
 (9, 15, 1),
-(10, 16, 1);
+(10, 16, 1),
+(11, 17, 1),
+(12, 18, 1),
+(13, 19, 1),
+(14, 20, 1),
+(15, 21, 1),
+(16, 22, 1);
 
 -- --------------------------------------------------------
 
@@ -207,6 +283,14 @@ ALTER TABLE `candle`
   ADD KEY `fk_candle_razmer` (`id_razer`);
 
 --
+-- Индексы таблицы `cart`
+--
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id_cart`),
+  ADD KEY `fk_cart_users` (`id_user`),
+  ADD KEY `fk_cart_candle` (`id_candle`);
+
+--
 -- Индексы таблицы `color`
 --
 ALTER TABLE `color`
@@ -217,6 +301,21 @@ ALTER TABLE `color`
 --
 ALTER TABLE `form`
   ADD PRIMARY KEY (`id_form`);
+
+--
+-- Индексы таблицы `order`
+--
+ALTER TABLE `order`
+  ADD PRIMARY KEY (`id_order`),
+  ADD KEY `fk_order_users` (`id_user`);
+
+--
+-- Индексы таблицы `order_candle`
+--
+ALTER TABLE `order_candle`
+  ADD PRIMARY KEY (`id_order-candle`),
+  ADD KEY `fk_order_candle_order` (`id_order`),
+  ADD KEY `fk_order_candle_candle` (`id_candle`);
 
 --
 -- Индексы таблицы `razmer`
@@ -252,7 +351,13 @@ ALTER TABLE `zapah`
 -- AUTO_INCREMENT для таблицы `candle`
 --
 ALTER TABLE `candle`
-  MODIFY `id_candle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_candle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+
+--
+-- AUTO_INCREMENT для таблицы `cart`
+--
+ALTER TABLE `cart`
+  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT для таблицы `color`
@@ -267,6 +372,18 @@ ALTER TABLE `form`
   MODIFY `id_form` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT для таблицы `order`
+--
+ALTER TABLE `order`
+  MODIFY `id_order` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT для таблицы `order_candle`
+--
+ALTER TABLE `order_candle`
+  MODIFY `id_order-candle` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT для таблицы `razmer`
 --
 ALTER TABLE `razmer`
@@ -276,13 +393,13 @@ ALTER TABLE `razmer`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблицы `user_candle`
 --
 ALTER TABLE `user_candle`
-  MODIFY `id_custom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_custom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT для таблицы `zapah`
@@ -302,6 +419,26 @@ ALTER TABLE `candle`
   ADD CONSTRAINT `fk_candle_form` FOREIGN KEY (`id_form`) REFERENCES `form` (`id_form`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_candle_razmer` FOREIGN KEY (`id_razer`) REFERENCES `razmer` (`id_razmer`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_candle_zapah` FOREIGN KEY (`id_zapah`) REFERENCES `zapah` (`id_zapah`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ограничения внешнего ключа таблицы `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `fk_cart_candle` FOREIGN KEY (`id_candle`) REFERENCES `candle` (`id_candle`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_cart_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ограничения внешнего ключа таблицы `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `fk_order_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Ограничения внешнего ключа таблицы `order_candle`
+--
+ALTER TABLE `order_candle`
+  ADD CONSTRAINT `fk_order_candle_candle` FOREIGN KEY (`id_candle`) REFERENCES `candle` (`id_candle`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_order_candle_order` FOREIGN KEY (`id_order`) REFERENCES `order` (`id_order`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Ограничения внешнего ключа таблицы `user_candle`

@@ -26,7 +26,8 @@
 		<a href="index.php" class="">ГЛАВНАЯ</a> 
 		<a href="constructor.php" class="">КОНСТРУКТОР</a>
 		<a href="kabinet.php" class="">ЛИЧНЫЙ КАБИНЕТ</a>  
-
+		<a href="zakazi.php" class="">ВАШИ ЗАКАЗЫ</a>
+		
 		<?php
 			if (isset($userId))
 			{
